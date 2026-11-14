@@ -1,7 +1,7 @@
 import { BIO, CLINIC, DOCS } from "../data";
 import { useBooking } from "../hooks/BookingContext";
 import { btn, card, CHIP, tag } from "../ui";
-import ImageSlot from "./ImageSlot";
+import DoctorImageSlot from "./DoctorImageSlot";
 
 export default function DoctorProfile({ index: i }) {
   const { openBooking } = useBooking();
@@ -19,9 +19,9 @@ export default function DoctorProfile({ index: i }) {
       >
         ← All doctors
       </a>
-      <div className="grid grid-cols-[340px_1fr] gap-11 items-start m860:grid-cols-1">
+      <div className="grid grid-cols-[340px_1fr] gap-11 items-start m860:grid-cols-1 ">
         <aside>
-          <ImageSlot k={"d" + i} label={d.n} className="aspect-[4/5] rounded-3xl" />
+          <DoctorImageSlot k={"d" + i} label={d.n} className="aspect-[4/5] rounded-3xl " />
           <div className={`${card} p-[22px] mt-[18px] text-[14.5px] text-muted`}>
             <h3 className="text-base text-navy mb-[10px]">Visit details</h3>
             <p className="mt-0 mb-2">

@@ -6,6 +6,7 @@ import clinicimg from "../assets/clinicimg.jpg";
 import clinicimg1 from "../assets/clinicimg1.jpg";
 import clinicimg2 from "../assets/clinicimg2.jpg";
 import clinicimg3 from "../assets/clinicimg3.jpeg";
+import doctorbilalimage from "../assets/drhbrr.png"
 
 export const IMG = {
   hero: "",
@@ -13,7 +14,7 @@ export const IMG = {
   g2: clinicimg1,
   g3: clinicimg2,
   g4: clinicimg3,
-  d0: "",
+  d0: doctorbilalimage,
   d1: "",
   d2: "",
   d3: "",
