@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Theme tokens (light + dark). Tailwind colors read these. ---------- */
+:root {
+  --navy: #0f172a;
+  --teal: #0d9488;
+  --teal-d: #0b7a70;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --amber: #d97706;
+  --muted: #475569;
+  --line: #e2e8f0;
+  --tint: #ccfbf1;
+  --glass: rgba(255, 255, 255, 0.72);
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --navy: #e8eef7;
+    --bg: #0b1220;
+    --card: #131c2e;
+    --muted: #a3b1c6;
+    --line: #223049;
+    --tint: #0f3b39;
+    --glass: rgba(19, 28, 46, 0.72);
+    --teal: #2dd4bf;
+    --teal-d: #5eead4;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --navy: #e8eef7;
+  --bg: #0b1220;
+  --card: #131c2e;
+  --muted: #a3b1c6;
+  --line: #223049;
+  --tint: #0f3b39;
+  --glass: rgba(19, 28, 46, 0.72);
+  --teal: #2dd4bf;
+  --teal-d: #5eead4;
+  color-scheme: dark;
+}
+
+/* ---------- Base element styles (things utilities can't express on <html>/<body>) ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(84px + env(safe-area-inset-top, 0px));
+  }
+  body {
+    background: var(--bg);
+    color: var(--navy);
+    font: 400 16px/1.65 Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* keeps content clear of the phone status bar */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto;
+    height: env(safe-area-inset-top, 0px);
+    background: var(--bg);
+    z-index: 60;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  :focus-visible {
+    outline: 3px solid var(--teal);
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
