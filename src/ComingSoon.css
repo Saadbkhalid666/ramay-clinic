@@ -2,17 +2,63 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap");
 
 :root {
-  --bg: #06151b;
-  --surface: #0c2229;
-  --green: #55e6bd;
-  --green-light: #a0ffe0;
-  --text: #f2fbf8;
-  --muted: #8ba6a5;
-  --border: rgba(148, 220, 205, 0.13);
+  --bg: #030708;
+  --surface: #071b1d;
+  --surface-light: #0b292b;
+
+  --green: #20c9a5;
+  --green-light: #65e6c7;
+  --teal-dark: #063b3b;
+
+  --text: #5ca292;
+  --muted: #83aaa3;
+  --border: rgba(65, 205, 177, 0.16);
 }
 
 * {
   box-sizing: border-box;
+} 
+/* Main content cards */
+.card,
+.feature-card,
+.countdown-box {
+  background: linear-gradient(
+    145deg,
+    #0a2425,
+    #061617
+  );
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* Headings */
+.coming-page h1,
+.coming-page h2,
+.coming-page h3 {
+  color: var(--text);
+}
+
+/* Highlighted text */
+.coming-page .highlight,
+.coming-page .accent {
+  color: var(--green-light);
+}
+
+/* Paragraphs */
+.coming-page p {
+  color: var(--muted);
+}
+
+/* Buttons */
+.coming-page button {
+  background: linear-gradient(135deg, #087c6a, #075447);
+  color: #eafff9;
+  border: 1px solid rgba(65, 205, 177, 0.25);
+}
+
+/* Icons */
+.coming-page svg {
+  color: var(--green);
 }
 
 .coming-page {
