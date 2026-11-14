@@ -2,12 +2,17 @@
    Paste an image link or a data: URI between the quotes. Empty = placeholder shows.
    hero = hero photo, g1-g4 = gallery, d0-d5 = doctors in card order
    (Hafiz, Zeeshan, Adeel, Asmaa, Rafia, Nuzhat) */
+import clinicimg from "../assets/clinicimg.jpg";
+import clinicimg1 from "../assets/clinicimg1.jpg";
+import clinicimg2 from "../assets/clinicimg2.jpg";
+import clinicimg3 from "../assets/clinicimg3.jpeg";
+
 export const IMG = {
   hero: "",
-  g1: "",
-  g2: "",
-  g3: "",
-  g4: "",
+  g1: clinicimg,
+  g2: clinicimg1,
+  g3: clinicimg2,
+  g4: clinicimg3,
   d0: "",
   d1: "",
   d2: "",
@@ -206,7 +211,7 @@ export const FAQ = [
     "What should I do in a medical emergency?",
     "For life-threatening emergencies, go to your nearest emergency department immediately. For guidance during clinic hours, call us on 042-38900939.",
   ],
-];
+]; 
 
 export const GALLERY = [
   ["g1", "Reception & waiting area"],
