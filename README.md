@@ -1,19 +1,38 @@
-# React + Vite
+# Ramay Clinic – React + Tailwind CSS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React (Vite) + Tailwind CSS version of the single-file `index.html`. Same look, content and behaviour.
 
-Currently, two official plugins are available:
+```bash
+npm install
+npm run dev      # local dev server
+npm run build    # production build in /dist
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Structure
 
-## React Compiler
+```
+tailwind.config.js         theme: colors (CSS-variable based), fonts, keyframes,
+                           max-width screens (m960, m900, m860, m820, m700, m600, m520)
+postcss.config.js
+index.html                 Vite entry (fonts + #root)
+src/
+  main.jsx                 mounts <App />
+  App.jsx                  page layout + hash routing (#doctor-<slug> = profile page)
+  ui.js                    shared Tailwind class strings (wrap, btn(), card, tag, GRID3, CHIP...)
+  styles/index.css         Tailwind directives + light/dark theme variables + html/body base only
+  data/index.js            all content: IMG slots, DEPTS, DOCS, BIO, TESTI, FAQ, CLINIC info
+  hooks/                   BookingContext, useHashRoute, useTilt, useThreeScene
+  components/              Navbar, Logo, Hero, HeroScene, Metrics, Section, SectionHeader,
+                           Departments, DeptIcon, Doctors, DoctorCard, DoctorProfile,
+                           Pharmacy, PharmacyScene, Location, Gallery, ImageSlot,
+                           Testimonials, Faq, Footer, MobileDock, BookingModal
+```
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Theming
+Colors are Tailwind tokens (`bg-teal`, `text-muted`, `border-line`, `bg-card`, ...) that read CSS variables
+from `src/styles/index.css`, so dark mode (OS setting or `data-theme="dark"`) switches everything at once.
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+## Adding photos
+Fill the `IMG` object in `src/data/index.js` (hero, g1–g4, d0–d5) with image URLs.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+`three` is pinned to 0.128.0 to match the original build.
