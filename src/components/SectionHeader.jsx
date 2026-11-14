@@ -8,3 +8,4 @@ export default function SectionHeader({ id, title, children }) {
     </div>
   );
 }
+ 

@@ -6,7 +6,7 @@ import clinicimg from "../assets/clinicimg.jpg";
 import clinicimg1 from "../assets/clinicimg1.jpg";
 import clinicimg2 from "../assets/clinicimg2.jpg";
 import clinicimg3 from "../assets/clinicimg3.jpeg";
-import doctorbilalimage from "../assets/drhbrr.png"
+import doctorbilalimage from "../assets/drhbrr.png";
 
 export const IMG = {
   hero: "",
@@ -151,31 +151,37 @@ export const TESTI = [
     n: "Ayesha K.",
     d: "Parent • Pediatrics",
     q: "Our son felt comfortable straight away and the doctor explained everything clearly. Collecting his medicines at the on-site pharmacy saved us a second trip.",
+    r: 5,
   },
   {
     n: "Muhammad T.",
     d: "Patient • Internal Medicine",
     q: "Clear explanations, no rushing, and a proper follow-up plan. The whole visit felt organized and caring.",
+    r: 4,
   },
   {
     n: "Sana R.",
     d: "Patient • Dermatology",
     q: "Friendly staff and a doctor who actually listens. Booking was easy and the clinic was clean and calm.",
+    r: 5,
   },
   {
     n: "Imran S.",
     d: "Patient • Orthopedics",
     q: "I was worried about my knee, but the consultation was thorough and reassuring. I would recommend Ramay Clinic to family.",
+    r: 4,
   },
   {
     n: "Hira A.",
     d: "Patient • Physiotherapy",
     q: "My therapist built a routine I could follow at home and checked my progress at every visit.",
+    r: 5,
   },
   {
     n: "Bilal M.",
     d: "Patient • Medical Store",
     q: "I needed medicine late at night and the 24/7 store was open. That kind of reliability is rare.",
+    r: 5,
   },
 ];
 
@@ -212,7 +218,7 @@ export const FAQ = [
     "What should I do in a medical emergency?",
     "For life-threatening emergencies, go to your nearest emergency department immediately. For guidance during clinic hours, call us on 042-38900939.",
   ],
-]; 
+];
 
 export const GALLERY = [
   ["g1", "Reception & waiting area"],
