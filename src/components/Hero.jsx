@@ -1,38 +1,57 @@
 import { useState } from "react";
 import { IMG } from "../data";
 import { useBooking } from "../hooks/BookingContext";
+import { btn, btnGhost, dot, wrap } from "../ui";
 import HeroScene from "./HeroScene";
+
+/* floating stat cards around the hero visual */
+const FLOAT =
+  "absolute z-[2] bg-glass backdrop-blur-[12px] border border-line rounded-[18px] py-3 px-4 flex items-center gap-[11px] shadow-[0_18px_40px_-18px_rgba(15,23,42,0.45)] animate-bob";
+const FLOAT_B = "block font-h font-extrabold text-[18px] leading-[1.1]";
+const FLOAT_IC =
+  "w-[38px] h-[38px] rounded-xl grid place-items-center";
 
 export default function Hero() {
   const { openBooking } = useBooking();
   const [glOn, setGlOn] = useState(false);
 
   return (
-    <header className="hero" id="top">
-      <div className="wrap">
+    <header
+      id="top"
+      className="relative overflow-hidden text-white pt-[76px] pb-[110px] [background:radial-gradient(720px_520px_at_78%_42%,rgba(13,148,136,0.38),transparent_65%),radial-gradient(520px_420px_at_8%_92%,rgba(217,119,6,0.16),transparent_70%),#0b1220]"
+    >
+      <div
+        className={`${wrap} grid grid-cols-[1.05fr_0.95fr] gap-[52px] items-center m900:grid-cols-1`}
+      >
         <div>
-          <span className="badge">
-            <i className="dot"></i>Multi-Specialty Clinic &amp; 24/7 Medical
+          <span className="inline-flex items-center gap-[9px] bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.18)] rounded-full py-[7px] pr-[15px] pl-[10px] text-[13.5px] font-medium text-[#cbd5e1] backdrop-blur-[10px]">
+            <i className={dot}></i>Multi-Specialty Clinic &amp; 24/7 Medical
             Store • Lahore
           </span>
-          <h1>The Caring Specialists: Complete Healthcare for Your Family</h1>
-          <p className="sub">
+          <h1 className="text-[length:clamp(34px,5.2vw,58px)] font-extrabold text-white mt-[22px] mb-[18px]">
+            The Caring Specialists: Complete Healthcare for Your Family
+          </h1>
+          <p className="text-[18px] text-[#b6c4d9] max-w-[520px] mt-0 mb-[30px]">
             Multidisciplinary care across 6 departments, from kidney and
             diabetes care to bones, skin, children’s health, rehabilitation and
             mental wellbeing, all under one roof on Bedian Road.
           </p>
-          <div className="ctas">
-            <button className="btn btn-p" onClick={() => openBooking()}>
+          <div className="flex flex-wrap gap-3">
+            <button className={btn("p")} onClick={() => openBooking()}>
               Book an Appointment
             </button>
-            <a className="btn btn-s" href="#doctors">
+            <a className={btnGhost} href="#doctors">
               View Our Doctors
             </a>
           </div>
         </div>
 
-        <div className={`visual${glOn ? " gl-on" : ""}`}>
-          <div className="frame">
+        <div className="relative aspect-[1/1.1] max-w-[580px] w-full ml-auto m900:mx-auto m900:mt-[10px]">
+          <div
+            className={`absolute inset-0 rounded-[36px] overflow-hidden bg-[linear-gradient(160deg,#0f172a,#134e4a_70%,#0d9488)] ${
+              glOn ? "hidden" : ""
+            }`}
+          >
             <svg
               viewBox="0 0 400 408"
               width="100%"
@@ -103,22 +122,14 @@ export default function Hero() {
 
           {IMG.hero && (
             <img
-              id="heroImg"
               src={IMG.hero}
               alt="Ramay Clinic"
-              style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                borderRadius: 36,
-              }}
+              className="absolute inset-0 w-full h-full object-cover rounded-[36px]"
             />
           )}
 
-          <div className="fl f1">
-            <div className="ic">
+          <div className={`${FLOAT} top-[7%] -left-[6%] m900:left-0`}>
+            <div className={`${FLOAT_IC} bg-[#fef3c7] text-amber`}>
               <svg
                 width="20"
                 height="20"
@@ -129,13 +140,15 @@ export default function Hero() {
               </svg>
             </div>
             <div>
-              <b>4.9★</b>
-              <span>Patient Rating</span>
+              <b className={FLOAT_B}>4.9★</b>
+              <span className="text-[12.5px] text-muted">Patient Rating</span>
             </div>
           </div>
 
-          <div className="fl f2">
-            <div className="ic">
+          <div
+            className={`${FLOAT} top-[44%] -right-[5%] m900:right-0 [animation-delay:-2s]`}
+          >
+            <div className={`${FLOAT_IC} bg-tint text-teal`}>
               <svg
                 width="20"
                 height="20"
@@ -149,13 +162,15 @@ export default function Hero() {
               </svg>
             </div>
             <div>
-              <b>6+</b>
-              <span>Specialties</span>
+              <b className={FLOAT_B}>6+</b>
+              <span className="text-[12.5px] text-muted">Specialties</span>
             </div>
           </div>
 
-          <div className="fl f3">
-            <div className="ic">
+          <div
+            className={`${FLOAT} bottom-[6%] left-[6%] [animation-delay:-4s]`}
+          >
+            <div className={`${FLOAT_IC} bg-tint text-teal`}>
               <svg
                 width="20"
                 height="20"
@@ -170,8 +185,8 @@ export default function Hero() {
               </svg>
             </div>
             <div>
-              <b>24/7</b>
-              <span>Pharmacy</span>
+              <b className={FLOAT_B}>24/7</b>
+              <span className="text-[12.5px] text-muted">Pharmacy</span>
             </div>
           </div>
         </div>

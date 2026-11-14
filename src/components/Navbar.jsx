@@ -1,6 +1,15 @@
 import { useEffect, useRef } from "react";
 import { useBooking } from "../hooks/BookingContext";
+import { btn, wrap } from "../ui";
 import Logo from "./Logo";
+
+const LINKS = [
+  ["#departments", "Departments"],
+  ["#doctors", "Our Doctors"],
+  ["#pharmacy", "Pharmacy"],
+  ["#reviews", "Reviews"],
+  ["#faq", "FAQs"],
+];
 
 export default function Navbar() {
   const prog = useRef(null);
@@ -22,18 +31,24 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav>
-      <div id="prog" ref={prog}></div>
-      <div className="wrap">
+    <nav className="sticky top-[env(safe-area-inset-top,0px)] z-50 bg-glass backdrop-blur-[14px] border-b border-line">
+      <div
+        ref={prog}
+        className="absolute left-0 -bottom-px h-[3px] w-0 z-[2] bg-[linear-gradient(90deg,var(--teal),var(--amber))]"
+      ></div>
+      <div className={`${wrap} flex items-center justify-between h-[70px] gap-4`}>
         <Logo href="#top" ariaLabel="Ramay Clinic home" />
-        <div className="links">
-          <a href="#departments">Departments</a>
-          <a href="#doctors">Our Doctors</a>
-          <a href="#pharmacy">Pharmacy</a>
-          <a href="#reviews">Reviews</a>
-          <a href="#faq">FAQs</a>
+        <div className="flex gap-6 font-medium text-[15px] text-muted m820:hidden">
+          {LINKS.map(([href, label]) => (
+            <a key={href} href={href} className="hover:text-teal">
+              {label}
+            </a>
+          ))}
         </div>
-        <button className="btn btn-p nav-cta" onClick={() => openBooking()}>
+        <button
+          className={btn("p", "px-[18px] py-[10px]")}
+          onClick={() => openBooking()}
+        >
           Book Appointment
         </button>
       </div>

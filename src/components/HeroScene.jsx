@@ -112,5 +112,9 @@ function setup({ scene: sc }) {
 export default function HeroScene({ onReady }) {
   const ref = useRef(null);
   useThreeScene(ref, { fov: 40, position: [0, 0, 15] }, setup, onReady);
-  return <canvas id="gl" ref={ref} aria-hidden="true" />;
+  return <canvas
+      ref={ref}
+      aria-hidden="true"
+      className="absolute [inset:-6%_-12%] w-[124%] h-[112%] z-[1] pointer-events-none"
+    />;
 }

@@ -1,17 +1,24 @@
 import { CLINIC } from "../data";
 import { useBooking } from "../hooks/BookingContext";
+import { btn, card, dot } from "../ui";
 
 function InfoRow({ title, icon, children }) {
   return (
-    <div className="row">
-      <div className="ico">{icon}</div>
+    <div className="flex gap-[14px]">
+      <div className="w-[42px] h-[42px] rounded-[13px] shrink-0 bg-tint text-teal grid place-items-center">
+        {icon}
+      </div>
       <div>
-        <b>{title}</b>
+        <b className="block font-h font-bold text-[15px] leading-[normal]">
+          {title}
+        </b>
         {children}
       </div>
     </div>
   );
 }
+
+const ROW_TEXT = "text-muted text-[15px]";
 
 const iconProps = {
   width: 20,
@@ -27,10 +34,10 @@ export default function Location() {
   const { openBooking } = useBooking();
 
   return (
-    <div className="loc">
-      <div className="card info">
-        <span className="open">
-          <i className="dot"></i>Ramay Clinic &amp; Medical Store • Open 24/7
+    <div className="grid grid-cols-[1fr_1.1fr] gap-6 m900:grid-cols-1">
+      <div className={`${card} p-8 flex flex-col gap-[22px]`}>
+        <span className="inline-flex items-center gap-2 bg-tint text-teal-d font-h font-bold text-[13px] leading-[normal] py-[6px] px-[14px] rounded-full self-start">
+          <i className={dot}></i>Ramay Clinic &amp; Medical Store • Open 24/7
         </span>
 
         <InfoRow
@@ -42,7 +49,7 @@ export default function Location() {
             </svg>
           }
         >
-          <span>{CLINIC.address}</span>
+          <span className={ROW_TEXT}>{CLINIC.address}</span>
         </InfoRow>
 
         <InfoRow
@@ -54,7 +61,7 @@ export default function Location() {
             </svg>
           }
         >
-          <span>{CLINIC.hours}</span>
+          <span className={ROW_TEXT}>{CLINIC.hours}</span>
         </InfoRow>
 
         <InfoRow
@@ -65,21 +72,22 @@ export default function Location() {
             </svg>
           }
         >
-          <a href={CLINIC.phone1Href}>{CLINIC.phone1}</a> /{" "}
-          <a href={CLINIC.phone2Href}>{CLINIC.phone2}</a>
+          <a className={`${ROW_TEXT} hover:text-teal`} href={CLINIC.phone1Href}>{CLINIC.phone1}</a> /{" "}
+          <a className={`${ROW_TEXT} hover:text-teal`} href={CLINIC.phone2Href}>{CLINIC.phone2}</a>
         </InfoRow>
 
-        <button className="btn btn-p" onClick={() => openBooking()}>
+        <button className={btn("p")} onClick={() => openBooking()}>
           Book Appointment
         </button>
       </div>
 
       <div
-        className="map"
+        className="relative min-h-[360px] rounded-3xl overflow-hidden border border-line bg-[#e6f4f1]"
         role="img"
         aria-label="Map placeholder showing Ramay Clinic on Bedian Road, Lahore"
       >
         <svg
+          className="absolute inset-0 w-full h-full"
           viewBox="0 0 600 400"
           preserveAspectRatio="xMidYMid slice"
           aria-hidden="true"
@@ -134,7 +142,7 @@ export default function Location() {
           </text>
         </svg>
 
-        <div className="pin">
+        <div className="absolute left-1/2 top-[46%] -translate-x-1/2 -translate-y-full text-center">
           <svg width="46" height="56" viewBox="0 0 46 56">
             <path
               d="M23 54s19-16 19-31A19 19 0 0 0 4 23c0 15 19 31 19 31z"
@@ -150,15 +158,14 @@ export default function Location() {
           </svg>
         </div>
 
-        <div className="lab">
+        <div className="absolute left-[18px] right-[18px] bottom-[18px] flex justify-between items-center gap-3 flex-wrap bg-glass backdrop-blur-[12px] border border-line rounded-[18px] py-[14px] px-4 text-navy">
           <div>
             <b style={{ fontFamily: "var(--h)" }}>Ramay Clinic</b>
             <br />
             <small>Bedian Road, Lahore</small>
           </div>
           <a
-            className="btn btn-p"
-            style={{ padding: "10px 16px" }}
+            className={btn("p", "py-[10px] px-4")}
             target="_blank"
             rel="noopener"
             href="https://www.google.com/maps/search/?api=1&query=Ramay+Clinic+Bedian+Road+Lahore"

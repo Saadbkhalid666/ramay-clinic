@@ -74,5 +74,9 @@ function setup({ scene: sc }) {
 export default function PharmacyScene() {
   const ref = useRef(null);
   useThreeScene(ref, { fov: 40, position: [0, 0, 14] }, setup);
-  return <canvas id="gl2" ref={ref} aria-hidden="true" />;
+  return <canvas
+      ref={ref}
+      aria-hidden="true"
+      className="absolute inset-0 w-full h-full z-[1] pointer-events-none"
+    />;
 }

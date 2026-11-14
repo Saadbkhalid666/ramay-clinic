@@ -1,20 +1,32 @@
 import { DEPTS } from "../data";
 import { useBooking } from "../hooks/BookingContext";
-import useTilt from "../hooks/useTilt";
+import useTilt, { TILT } from "../hooks/useTilt";
+import { card, GRID3, ico } from "../ui";
 import DeptIcon from "./DeptIcon";
+import Section from "./Section";
 import SectionHeader from "./SectionHeader";
 
 function DeptCard({ dept }) {
   const { openBooking } = useBooking();
-  const [ref, tilt] = useTilt();
+  const [ref, tilting] = useTilt();
   return (
-    <article ref={ref} className={`card dept ${tilt}`}>
-      <div className="ico">
+    <article
+      ref={ref}
+      className={`${card} p-7 hover:border-teal hover:shadow-[0_22px_40px_-26px_rgba(13,148,136,0.55)] ${
+        tilting
+          ? TILT
+          : "transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-[5px]"
+      }`}
+    >
+      <div className={ico}>
         <DeptIcon name={dept.k} />
       </div>
-      <h3>{dept.n}</h3>
-      <p>{dept.d}</p>
-      <button className="a" onClick={() => openBooking({ dept: dept.f })}>
+      <h3 className="text-[19px] mb-2">{dept.n}</h3>
+      <p className="mt-0 mb-[14px] text-muted text-[15px]">{dept.d}</p>
+      <button
+        className="font-h font-semibold text-sm leading-[normal] text-teal cursor-pointer bg-transparent border-0 p-0"
+        onClick={() => openBooking({ dept: dept.f })}
+      >
         Book a visit
       </button>
     </article>
@@ -23,18 +35,16 @@ function DeptCard({ dept }) {
 
 export default function Departments() {
   return (
-    <section id="departments">
-      <div className="wrap">
-        <SectionHeader title="Medical departments">
-          Six departments, one coordinated team, so your family doesn’t have to
-          travel across the city for answers.
-        </SectionHeader>
-        <div className="grid3" id="deptGrid">
-          {DEPTS.map((d) => (
-            <DeptCard key={d.k} dept={d} />
-          ))}
-        </div>
+    <Section id="departments">
+      <SectionHeader title="Medical departments">
+        Six departments, one coordinated team, so your family doesn’t have to
+        travel across the city for answers.
+      </SectionHeader>
+      <div className={GRID3}>
+        {DEPTS.map((d) => (
+          <DeptCard key={d.k} dept={d} />
+        ))}
       </div>
-    </section>
+    </Section>
   );
 }

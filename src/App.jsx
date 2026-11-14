@@ -41,6 +41,7 @@ export default function App() {
 
   return (
     <BookingProvider>
+      <div className="m700:pb-[84px]">
       <Navbar />
 
       {/* Home stays mounted (just hidden) so filters and 3D scenes keep their state */}
@@ -62,6 +63,7 @@ export default function App() {
       <Footer />
       <MobileDock />
       <BookingModal />
+      </div>
     </BookingProvider>
   );
 }

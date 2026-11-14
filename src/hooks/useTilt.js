@@ -1,10 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 
-/* 3D hover tilt + glow for cards (desktop pointers only, respects reduced motion).
-   Usage: const [ref, tilt] = useTilt();  <article ref={ref} className={`card dept ${tilt}`}> */
+/* Classes applied while the 3D tilt + glow is active (desktop pointers only). */
+export const TILT =
+  "relative overflow-hidden will-change-transform transition-[transform,box-shadow] duration-[120ms] ease-out " +
+  "[transform:perspective(900px)_rotateX(var(--rx,0deg))_rotateY(var(--ry,0deg))_translateY(var(--ty,0px))] " +
+  "after:content-[''] after:absolute after:inset-0 after:rounded-[inherit] after:pointer-events-none " +
+  "after:opacity-0 after:transition-opacity after:duration-200 " +
+  "after:[background:radial-gradient(280px_circle_at_var(--mx,50%)_var(--my,0%),rgba(13,148,136,0.16),transparent_62%)] " +
+  "hover:after:opacity-100";
+
+/* Usage:
+   const [ref, tilting] = useTilt();
+   <article ref={ref} className={`... ${tilting ? TILT : "simple hover lift classes"}`}> */
 export default function useTilt() {
   const ref = useRef(null);
-  const [tilt, setTilt] = useState("");
+  const [tilting, setTilting] = useState(false);
 
   useEffect(() => {
     const c = ref.current;
@@ -15,7 +25,7 @@ export default function useTilt() {
     )
       return;
 
-    setTilt("tilt");
+    setTilting(true);
 
     const move = (e) => {
       const b = c.getBoundingClientRect(),
@@ -38,5 +48,5 @@ export default function useTilt() {
     };
   }, []);
 
-  return [ref, tilt];
+  return [ref, tilting];
 }

@@ -1,13 +1,12 @@
-export default function Logo({ href, ariaLabel, style, nameColor, subColor }) {
+export default function Logo({ href, ariaLabel, className = "", nameColor, subColor }) {
   const Tag = href ? "a" : "div";
   return (
     <Tag
-      className="logo"
+      className={`flex items-center gap-[11px] ${className}`}
       href={href}
       aria-label={ariaLabel}
-      style={style}
     >
-      <span className="logo-mark">
+      <span className="w-[42px] h-[42px] rounded-[14px] bg-teal grid place-items-center">
         <svg
           width="24"
           height="24"
@@ -21,8 +20,16 @@ export default function Logo({ href, ariaLabel, style, nameColor, subColor }) {
         </svg>
       </span>
       <span>
-        <b style={nameColor ? { color: nameColor } : undefined}>Ramay Clinic</b>
-        <small style={subColor ? { color: subColor } : undefined}>
+        <b
+          className="block font-h font-extrabold text-[18px] leading-[1.1]"
+          style={nameColor ? { color: nameColor } : undefined}
+        >
+          Ramay Clinic
+        </b>
+        <small
+          className="block text-xs text-muted m820:hidden"
+          style={subColor ? { color: subColor } : undefined}
+        >
           The Caring Specialists
         </small>
       </span>
