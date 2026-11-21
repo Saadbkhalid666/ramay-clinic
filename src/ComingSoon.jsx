@@ -11,7 +11,7 @@ import "./ComingSoon.css";
 
 // Change this to the clinic's confirmed launch date.
 // Format: YYYY-MM-DDTHH:mm:ss+05:00
-const LAUNCH_DATE = new Date("2026-11-22T00:00:00+05:00").getTime();
+const LAUNCH_DATE = new Date("2026-11-30T00:00:00+05:00").getTime();
 
 const getTimeLeft = () => {
   const difference = Math.max(0, LAUNCH_DATE - Date.now());
